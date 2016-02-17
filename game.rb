@@ -19,12 +19,12 @@ class Game
 
   if computer_choice == player_choice
     wins[:tie] += 1
-    puts "#{player_choice} vs. #{computer_choice} It's a tie."
+    puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- TIE"
   elsif rules.key(computer_choice).to_s == player_choice
     wins[:player] += 1
-    puts "#{player_choice} vs. #{computer_choice}.. You win!"
+    puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- PLAYER WINS"
   else
     wins[:computer] +=1
-    puts "#{computer_choice} vs. #{player_choice}.. You Lose."
+    puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- COMPUTER WINS"
   end
 end
