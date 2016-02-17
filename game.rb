@@ -1,13 +1,12 @@
 class Game
   def play
     rules = {Rock: "Scissors", Paper: "Rock", Scissors: "Paper"}
-    choices = ["Rock", "Paper", "Scissors"]
     wins = {Player: 0, Computer: 0, Tie: 0, Rock: 0, Paper: 0, Scissors: 0}
     loop_count = 1000
 
     while loop_count > 0
-      player_choice = choices.sample
-      computer_choice = choices.sample
+      player_choice = rules.values.sample
+      computer_choice = rules.values.sample
 
       if computer_choice == player_choice
         wins[:Tie] += 1
