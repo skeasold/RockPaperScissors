@@ -1,30 +1,28 @@
 class Game
-  rules = {
-    Rock: "Scissors",
-    Paper: "Rock",
-    Scissors: "Paper"
-  }
+  attr_reader :rules, :choices, :player_choice, :computer_choice
+  attr_writer :wins
 
-  choices = ["Rock", "Paper", "Scissors"]
+  def play
+    rules = {Rock: "Scissors", Paper: "Rock", Scissors: "Paper"}
+    choices = ["Rock", "Paper", "Scissors"]
+    wins = {player: 0, computer: 0, tie: 0}
 
-  wins = {
-    player: 0,
-    computer: 0,
-    tie: 0
-  }
+    puts "Please type a choice."
+    player_choice = gets.chomp.capitalize
+    computer_choice = choices.sample
 
-  puts "Please type a choice."
-  player_choice = gets.chomp.capitalize
-  computer_choice = "Paper"
-
-  if computer_choice == player_choice
-    wins[:tie] += 1
-    puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- TIE"
-  elsif rules.key(computer_choice).to_s == player_choice
-    wins[:player] += 1
-    puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- PLAYER WINS"
-  else
-    wins[:computer] +=1
-    puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- COMPUTER WINS"
+    if computer_choice == player_choice
+      wins[:tie] += 1
+      puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- TIE"
+    elsif rules.key(computer_choice).to_s == player_choice
+      wins[:player] += 1
+      puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- PLAYER WINS"
+    else
+      wins[:computer] +=1
+      puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- COMPUTER WINS"
+    end
   end
 end
+
+game = Game.new
+game.play
