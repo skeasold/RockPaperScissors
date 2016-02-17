@@ -7,7 +7,6 @@ class Game
     while loop_count > 0
       player_choice = rules.values.sample
       computer_choice = rules.values.sample
-
       if computer_choice == player_choice
         wins[:Tie] += 1
         puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- TIE"
