@@ -2,25 +2,29 @@ class Game
   def play
     rules = {Rock: "Scissors", Paper: "Rock", Scissors: "Paper"}
     choices = ["Rock", "Paper", "Scissors"]
-    wins = {player: 0, computer: 0, tie: 0}
-    most_won = []
+    wins = {Player: 0, Computer: 0, Tie: 0, Rock: 0, Paper: 0, Scissors: 0}
 
-    puts "Please type a choice."
-    player_choice = gets.chomp.capitalize
-    computer_choice = choices.sample
+    loop_count = 5
+    while loop_count > 0
 
-    if computer_choice == player_choice
-      wins[:tie] += 1
-      puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- TIE"
-    elsif rules.key(computer_choice).to_s == player_choice
-      wins[:player] += 1
-      most_won << player_choice
-      puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- PLAYER WINS"
-    else
-      wins[:computer] +=1
-      most_won << computer_choice
-      puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- COMPUTER WINS"
+      player_choice = choices.sample
+      computer_choice = choices.sample
+
+      if computer_choice == player_choice
+        wins[:Tie] += 1
+        puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- TIE"
+      elsif rules.key(computer_choice).to_s == player_choice
+        wins[:Player] += 1
+        wins[player_choice.to_sym] += 1
+        puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- PLAYER WINS"
+      else
+        wins[:Computer] +=1
+        wins[computer_choice.to_sym] += 1
+        puts "PLAYER: #{player_choice} vs. COMPUTER: #{computer_choice} -- COMPUTER WINS"
+      end
+      loop_count -= 1
     end
+    puts wins.inspect
   end
 end
 
