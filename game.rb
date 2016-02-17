@@ -3,10 +3,9 @@ class Game
     rules = {Rock: "Scissors", Paper: "Rock", Scissors: "Paper"}
     choices = ["Rock", "Paper", "Scissors"]
     wins = {Player: 0, Computer: 0, Tie: 0, Rock: 0, Paper: 0, Scissors: 0}
+    loop_count = 1000
 
-    loop_count = 5
     while loop_count > 0
-
       player_choice = choices.sample
       computer_choice = choices.sample
 
